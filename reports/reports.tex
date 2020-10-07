@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[T1]{fontenc}% http://ctan.org/pkg/fontenc 
+
+\makeatletter
+\newcommand\newlof{% 
+	\section{\protect\listfigurename}% 
+	\@mkboth{\MakeUppercase\listfigurename}% 
+	{\MakeUppercase\listfigurename}% 
+	\@starttoc{lof}% 
+} 
+\makeatother 
+ 
+\begin{document}
+ 
+\listoftables
+\clearpage
+ 
+\newlof
+\clearpage
+\input{../tables/mpg_desc_stat.tex}
+\input{../tables/mpg_head.tex}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{../figures/mpg_bar_plot.pdf}
+\caption{\protect\detokenize{mpg_bar_plot.pdf}}
+\end{figure}
+\clearpage
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{../figures/mpg_line_plot.jpeg}
+\caption{\protect\detokenize{mpg_line_plot.jpeg}}
+\end{figure}
+\clearpage
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{../figures/scatter plot.pdf}
+\caption{\protect\detokenize{scatter plot.pdf}}
+\end{figure}
+\clearpage
+\end{document}
