@@ -1,5 +1,8 @@
 import os
 import fnmatch
+import subprocess
+import time
+
 #Based on Q from: https://latex.org/forum/viewtopic.php?t=3622
 __file__ = 'makereport.py'
 ### Put this file in the WD
@@ -53,5 +56,22 @@ for fig in sorted(fnmatch.filter(os.listdir("figures"), "*.*")):
 
 
 stream.write("\\end{document}\n")
-
 stream.close()
+
+answer = input("Tex file was made, would you like to compile it to PDF? Y/N ") 
+if answer == "Y":
+    print("Compiling report.tex into report.pdf")
+    #print(os.getcwd())
+    os.chdir('reports') 
+    print(os.getcwd())
+    #os.system("pdflatex \"reports\".tex");
+    subprocess.Popen(['pdflatex', 'reports.tex'])
+    time.sleep(1.5)
+    subprocess.Popen(['pdflatex', 'reports.tex'])
+    print("Press any key to quit")
+
+elif answer == "N":
+    print("Quit")
+else:
+    print("Please enter Y(yes) or N(no). Quits Now, reload the Bat file")
+    
